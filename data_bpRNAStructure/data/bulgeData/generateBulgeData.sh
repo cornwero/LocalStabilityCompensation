@@ -1,0 +1,1 @@
+python3 generateBulgeData.py ../inputFiles/RNA_Identifiers.txt ../inputFiles/allSTFiles.txt ./allBulgeLocalEnergyData_rounded.txt

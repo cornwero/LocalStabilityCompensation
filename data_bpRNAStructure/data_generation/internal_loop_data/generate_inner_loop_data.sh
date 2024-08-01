@@ -1,0 +1,1 @@
+python3 generateInnerLoopData.py ../rna_identifiers/rna_identifiers.txt <file with paths to ST file> <output file name>

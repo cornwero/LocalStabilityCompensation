@@ -1,0 +1,1 @@
+python3 mergeRNAIdentifiers.py allbpRNA_OriginURLs.txt cleaned_typelist.txt RNA_identifiers.txt

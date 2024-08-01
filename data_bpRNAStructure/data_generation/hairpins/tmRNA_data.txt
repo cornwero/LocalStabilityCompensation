@@ -1,0 +1,1 @@
+rna_name	rna_id	rna_type	hairpinLabel	hairpinLen	hairpinEnergy	stemLabel	stemLen	stemEnergy

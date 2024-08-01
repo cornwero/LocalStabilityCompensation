@@ -1,0 +1,1 @@
+python3 generateInnerLoopData.py ../inputFiles/RNA_Identifiers.txt ../inputFiles/allSTFiles.txt ./allInternalLoopLocalEnergyData.txt
