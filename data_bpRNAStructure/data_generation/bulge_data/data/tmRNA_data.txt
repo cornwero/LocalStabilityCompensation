@@ -1,1 +1,0 @@
-rna_name	rna_id	rna_type	bulgeLabel	bulgeLen	bulgeEnergy	label5p	energy5p	label3p	energy3p

@@ -1,6 +1,0 @@
-python scripts/CompScoreHistograms.py netEnergyData/hairpin_scores.txt netEnergyData/bulge_scores.txt netEnergyData/internalloop_scores.txt bpRNA_1m_90_IDs.txt
-python scripts/CompScoreHistograms_rotation.py netEnergyData/hairpin_scores.txt netEnergyData/bulge_scores.txt netEnergyData/internalloop_scores.txt bpRNA_1m_90_IDs.txt
-python scripts/CompScoreLibraryHist.py netEnergyData/hairpin_scores.txt netEnergyData/hairpin_library_scores.txt bpRNA_1m_90_IDs.txt
-python scripts/CompScoreLibraryHist.py netEnergyData/bulge_scores.txt netEnergyData/bulge_library_scores.txt bpRNA_1m_90_IDs.txt
-python scripts/CompScoreLibraryHist.py netEnergyData/internalloop_scores.txt netEnergyData/internalloop_library_scores.txt bpRNA_1m_90_IDs.txt
-python scripts/CompScoreRNAType.py netEnergyData/hairpin_scores.txt bpRNA_1m_90_IDs.txt miRNA
