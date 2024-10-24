@@ -1,0 +1,3 @@
+python3.7 figure_scripts/plot_AUROCvsEnergy.py library/libraryDataHairpins.txt
+python3.7 figure_scripts/plot_AUROCvsEnergy.py library/libraryDataBulges.txt
+python3.7 figure_scripts/plot_AUROCvsEnergy.py library/libraryDataInternalLoops.txt

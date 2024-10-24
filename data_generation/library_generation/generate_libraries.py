@@ -303,17 +303,17 @@ def construct(struct,variants,randstem,outbase,item,minlen):
 
     directory = ''
     libname = ''
-    if item[0] in 'Hh': libname = 'hairpin'
-    if item[0] in 'Bb': libname = 'bulges'
-    if item[0] in 'Ii': libname = 'internalloop'
+    if item[0] in 'Hh': libname = 'Hairpins'
+    if item[0] in 'Bb': libname = 'Bulges'
+    if item[0] in 'Ii': libname = 'InternalLoops'
     if '/' in outbase:
         directory,outbase = outbase.split('/')
         directory+='/'
     i = 1
     all_str = []
-    csv = open(directory+libname+'_source/'+outbase+libname+'.csv','w')
+    csv = open(directory+libname+'/'+outbase+libname+'.csv','w')
 
-    with open(directory+libname+'_source/'+outbase+libname+'.txt','w') as f:
+    with open(directory+libname+'/'+outbase+libname+'.txt','w') as f:
         k = list(struct.keys())
         k.sort(key = lambda x: struct[x][0])
         idx = k.index(item)
@@ -357,12 +357,12 @@ def construct(struct,variants,randstem,outbase,item,minlen):
                         print(ID,DB,sequence)
                         f.write('>'+ID+'\n')
                         f.write(sequence+'\n')
-                        db = open(directory+libname+'_source/designed/'+ID+'.db','w')
+                        db = open(directory+libname+'/designed/'+ID+'.db','w')
                         db.write('>'+ID+'\n')
                         db.write(sequence+'\n')
                         db.write(DB+' (-31.5)\n')
                         db.close()
-                        fdb = open(directory+libname+'_source/folded/'+ID+'.db','w')
+                        fdb = open(directory+libname+'/folded/'+ID+'.db','w')
                         fdb.write('>'+ID+'\n')
                         fdb.write(sequence+'\n')
                         fdb.write(folded)

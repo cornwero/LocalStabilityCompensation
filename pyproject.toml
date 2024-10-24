@@ -1,0 +1,28 @@
+[build-system]
+
+[project]
+name = "LSC"
+version = "0.0.1"
+dependencies = [
+  "matplotlib >= 3.5.1",
+  "numpy >= 1.21.6",
+  "pandas == 1.3.5",
+  "Scipy >= 1.7.3",
+  "joypy == 0.2.4",
+  "json >= 2.0.9"
+]
+requires-python = ">=3.7.2"
+authors = [
+  {name = "Robert Cornwell-Arquitt", email = "cornwero@oregonstate.edu"},
+  {name = "David Hendrix", email = "david.hendrix@oregonstate.edu"}
+]
+description = "Library Generation, Free Energy computation, data processing, and figure generation for local stability compensation (LSC): __url_rxiv__"
+readme = "README.md"
+keywords = ["RNA", "Structural Biology, "Bioinformatics", "chemical mapping"]
+classifiers = [
+  "Programming Language :: Python"
+]
+
+[project.urls]
+Repository = "https://github.com/cornwero/LocalStabilityCompensation.git"
+"Bug Tracker" = "https://github.com/cornwero/LocalStabilityCompensation/issues"
