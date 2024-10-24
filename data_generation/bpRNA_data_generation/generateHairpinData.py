@@ -1,6 +1,6 @@
 import argparse
 import sys
-import bpRNAStructure as ST
+import bpRNAStructure.Structure as ST
 """
 filename: generateBulgeData.py
 Author: Micheal Hathaway
@@ -204,7 +204,7 @@ def process_multiple_files(file_list, rna_identifiers, output_file):
     with open(file_list, 'r') as f:
         for line in f:
             filename = 'stFiles/' + line.strip()
-            processSingleStructure(filename, RNA_Identifiers, Output_Data_File)
+            process_single_structure(filename, rna_identifiers, output_file)
 
 
 if __name__ == '__main__':

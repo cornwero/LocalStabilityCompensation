@@ -1,8 +1,5 @@
 import sys
-
-def path_setup():
-    #Enables local imports. These are the paths to the Turner parameters.
-    sys.path.insert(0, './TurnerParameters/parameters')
+import Structure as ST
 
 def extractEnergy(lbl, structure, bulges, hairpins, internals, stems):
     strlist = []
@@ -55,9 +52,6 @@ elif len(sys.argv) == 1:
     if filename[-3:] != ".st":
         print('error: input file extension is not .st')
         sys.exit()
-
-path_setup()
-import Structure as ST
 
 try:
     structureObject = ST.Structure(filename)  # create Structure object        

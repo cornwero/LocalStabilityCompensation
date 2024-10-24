@@ -15,7 +15,7 @@ Imports
 import argparse
 import logging
 import sys
-import Structure as ST
+import bpRNAStructure.Structure as ST
 
 """
 Function: getRNAIdentifiers(filename)

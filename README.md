@@ -2,7 +2,7 @@
 RNA serves both informational and structural roles in all forms of life. To realize the potential of  RNA biotechnology for therapeutics, we need to better characterize the “design rules” for RNA. While global metrics such as the minimum free energy are widely used, they are at odds with naturally occurring structures and incompatible with established design rules. Here, we introduce local stability compensation (LSC), the balance in the stabilizing free energy of stems and the destabilizing free energy of adjacent loops. We show that the signatures of LSC are present in a large database of naturally occurring structures, particularly for bulges and adjacent stems. The diversity of net free energy—the sum of stem and loop ΔG — of naturally occurring structures, is consistent with the diverse requirements for structural stability present in different RNA families. We systematically generated libraries of thousands of RNAs that investigated the space of stem vs loop ΔG combinations, and revealed that LSC affects stem reactivity almost exclusively in the local region. Our results suggest thermodynamic modularity in RNA, and we suggest that the relationship between LSC and local folding behavior may serve as a constraint on RNA structure prediction and design.
 
 ## Repository breakdown:
-### bpRNAStructure:
+### src/bpRNAStructure:
 This module is responsible for the calculation of folding free energies of individual substructures from structure type (.st) files
 Within the directory is the script bpRNA_ea.py which adds the free energy information to the structure type format, resulting in structure type energy (.ste) files
 

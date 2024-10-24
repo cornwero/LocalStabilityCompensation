@@ -13,7 +13,7 @@ Imports
 import argparse
 import logging
 import sys
-import Structure as ST
+import bpRNAStructure.Structure as ST
 
 """
 Function: getRNAIdentifiers(filename)
@@ -158,7 +158,7 @@ def processSingleStructure(structureTypeFile, RNA_Identifiers, Output_file_name)
             internalLoopData = extractDataFromInternalLoop(internalLoop, structureObject)
             if internalLoopData: #make sure all energy data is present
                 internalLoopLabel, internalLoopEnergy, label5p, energy5p, label3p, energy3p = internalLoopData
-                netE = (energy5p+energy3p)/2+internalloopEnergy
+                netE = (energy5p+energy3p)/2+internalLoopEnergy
                 dataString = f'{rna_name}\t{rna_ID}\t{rna_Type}\t{internalLoopLabel}\t{internalLoopEnergy}\t{label5p}\t{energy5p}\t{label3p}\t{energy3p}\t{netE}\n'
                 f.write(dataString)
            # else:
