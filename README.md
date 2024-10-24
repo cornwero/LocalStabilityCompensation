@@ -71,7 +71,8 @@ perl ../../bpRNA/bpRNA.pl template.db
 # generate libraries with a library name
 ./generate.sh test_library_
 
-# the hairpin, bulge, and internalloop directories will be cleaned and then populated with the new library files, and new ste files will appear in data/library
+# the hairpin, bulge, and internalloop directories will be cleaned and then populated 
+# with the new library files, and new ste files will appear in data/library
 ```
 if new reactivity data is collected, it should replace data/library/summary.json, and the processData.sh script should be edited with the new filename.
 note: summary.json contains the results of all three libraries.
