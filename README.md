@@ -44,8 +44,31 @@ mv data_bpRNA/* data/bpRNA/
 
 Operations:
 
-For reproducing the bpRNA-1m datafiles used, download bpRNA-1m and unzip the file in data_generation/bpRNA_data_generation/
-Exact instructions are detailed in data_generation/bpRNA_data_generation/README_bpRNA_generation.md
+regenerate bpRNA-1m datafiles
+download bpRNA-1m and unzip the file in data_generation/bpRNA_data_generation/
 
-For generating a new set of structure libraries, make adjustments to the structure template in data_generation/library_generation/template.db
-and run bpRNA/bpRNA.pl to generate a template.st. Then, run generate.sh.
+cd data_generation/bpRNA_data_generation
+
+Download the bpRNA-1m zip file:
+wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/stFiles.zip
+
+unzip the file stFiles.zip
+
+Run the shell script generate.sh
+./generate.sh
+the data files will appear in data/bpRNA/
+
+Generate new libraries
+
+cd data_generation/library_generation/
+
+Optional: edit template.db and run bpRNA to generate template.st
+perl ../../bpRNA/bpRNA.pl template.db
+
+generate libraries with a library name
+./generate.sh test_library_
+
+the hairpin, bulge, and internalloop directories will be cleaned and then populated with the new library files, and new ste files will appear in data/library
+
+if new reactivity data is collected, it should replace data/library/summary.json, and the processData.sh script should be edited with the new filename.
+note: summary.json contains the results of all three libraries.

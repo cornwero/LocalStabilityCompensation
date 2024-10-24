@@ -2,6 +2,9 @@
 python generate_libraries.py template.st $1
 for l in ls */
 do
+    rm -rf $l/*.*
+    rm -rf $l/designed/*
+    rm -rf $l/folded/*
     python filter_libraries_length.py $l/$1.txt $l/$1.csv;
     for f in $l/designed/*.db*
     do perl ../../bpRNA/bpRNA.pl $l/desgined/$f;
