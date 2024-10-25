@@ -9,7 +9,7 @@ dependencies = [
   "pandas == 1.3.5",
   "Scipy >= 1.7.3",
   "joypy == 0.2.4",
-  "json >= 2.0.9"
+  "json"
 ]
 requires-python = ">=3.7.2"
 authors = [
