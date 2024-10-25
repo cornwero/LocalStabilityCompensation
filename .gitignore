@@ -6,3 +6,4 @@
 
 #ignore the bpRNA repository
 bpRNA/
+/src/LSC.egg-info
