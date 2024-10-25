@@ -1,6 +1,7 @@
 '''
 Filename: Structure.py
 Author: Michael Hathaway
+Updated: Robert Cornwell-Arquitt
 
 Description: python module that defines the Structure Object.
 The Structure Object provides a user friendly mechanism for working with
@@ -13,7 +14,7 @@ import sys
 import re
 
 ## Structure Type Component Imports ##
-from StructureComponents import Stem, Hairpin, Bulge, InternalLoop, ExternalLoop, MultiLoop, PseudoKnot, End, NCBP
+from bpRNAStructure.StructureComponents import Stem, Hairpin, Bulge, InternalLoop, ExternalLoop, MultiLoop, PseudoKnot, End, NCBP
 
 '''
 ## About the structure object ##

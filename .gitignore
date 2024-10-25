@@ -3,7 +3,17 @@
 ################################################################################
 #ignore Visual Studio files
 /.vs
+#ignore mac hidden files
+/.DS_Store
 
 #ignore the bpRNA repository
 bpRNA/
-/src/LSC.egg-info
+
+#ignore package files
+src/LSC.egg-info
+
+#ignore build files
+build/
+
+#ignore StructureComponents.log
+src/bpRNAStructure/StructureComponents.log

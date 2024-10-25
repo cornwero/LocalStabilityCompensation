@@ -1,5 +1,5 @@
 import sys
-import Structure as ST
+import bpRNAStructure.Structure as ST
 
 def extractEnergy(lbl, structure, bulges, hairpins, internals, stems):
     strlist = []
