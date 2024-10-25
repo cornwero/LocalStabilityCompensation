@@ -36,6 +36,9 @@ git clone https://github.com/hendrixlab/bpRNA.git
 
 # intall perl from https://www.cpan.org/
 
+# install RNAfold 
+conda install -c bioconda viennarna
+
 # get data from figshare
 wget <figshare link library>
 wget <figshare link bpRNA-1m>
