@@ -18,7 +18,6 @@ authors = [
 ]
 description = "Library Generation, Free Energy computation, data processing, and figure generation for local stability compensation (LSC): __url_rxiv__"
 readme = "README.md"
-keywords = ["RNA", "Structural Biology, "Bioinformatics", "chemical mapping"]
 classifiers = [
   "Programming Language :: Python"
 ]

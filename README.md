@@ -20,7 +20,7 @@ this directory contains directories for the generation of bpRNA-1m data from the
 conda create -n LSC python=3.7.2
 
 # Activate the new environment
-activate LSC
+source activate LSC
 
 # clone the LSC repository:
 git clone https://github.com/cornwero/LocalStabilityCompensation.git
@@ -36,7 +36,7 @@ git clone https://github.com/hendrixlab/bpRNA.git
 
 # intall perl from https://www.cpan.org/
 
-# install RNAfold 
+# install RNAfold activate
 conda install -c bioconda viennarna
 
 # get data from figshare
