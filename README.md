@@ -20,7 +20,7 @@ this directory contains directories for the generation of bpRNA-1m data from the
 conda create -n LSC python=3.7.2
 
 # Activate the new environment
-source activate LSC
+conda activate LSC
 
 # clone the LSC repository:
 git clone https://github.com/cornwero/LocalStabilityCompensation.git
