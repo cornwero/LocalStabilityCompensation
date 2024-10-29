@@ -31,4 +31,4 @@ data/library/summary.json
 data_generation/library_generation/*/
 
 #ignore StructureComponents.log
-src/bpRNAStructure/StructureComponents.log
+/StructureComponents.log

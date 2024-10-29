@@ -5,6 +5,7 @@
 import os
 import sys
 import numpy as np
+import RNA
 from scipy.spatial import distance
 import random
 import difflib
@@ -343,9 +344,8 @@ def construct(struct,variants,randstem,outbase,item,minlen):
             if len(seq5p+outstr+seq3p) > minlen*1.2:
                 print('sequence too long')
                 continue
-            folded = os.popen('echo ' + seq5p+outstr+seq3p + ' | RNAfold --noPS').read()
-            folded = folded.split('\n')[1]
-            folded = folded.split(' ')[0]
+            folded = RNA.fold_compound(seq5p+outstr+seq3p)
+            folded = folded.mfe()[0]
             if hd(outstr,all_str) and 'AAAAA' not in outstr and check_bad_match(struct,k):
                 if '(' not in folded[-len(seq3p):] and ')' not in folded[-len(seq3p):]:
                     if folded[:len(seq5p)] == seq5pdb:

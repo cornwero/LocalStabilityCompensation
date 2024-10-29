@@ -21,6 +21,8 @@ conda create -n LSC python=3.7.2
 
 # Activate the new environment
 source activate LSC
+#or
+conda activate LSC 
 
 # clone the LSC repository:
 git clone https://github.com/cornwero/LocalStabilityCompensation.git
@@ -35,9 +37,11 @@ pip install .
 git clone https://github.com/BLasher113/bpRNA_align.git
 
 # intall perl from https://www.cpan.org/
+# or use conda
+conda install conda-forge::perl
 
-# install RNAfold activate
-conda install -c bioconda viennarna
+# install RNAfold python module, used to fold generated library structures.
+pip install ViennaRNA
 
 # get data from figshare
 wget <figshare link library>
