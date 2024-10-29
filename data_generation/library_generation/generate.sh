@@ -15,10 +15,11 @@ done
 
 #Run the generation script.
 python generate_libraries.py template.st $1
+mv template.st ..
 for l in */
 do
     #for each loop type directory, filter the library 
-    python filter_libraries_length.py $l/$1.txt $l/$1.csv;
+    python filter_libraries_length.py $l/*.txt $l/*.csv;
 
     #move filtered libraries to the data directory.
     mv $l/*_filtered* ../../data/library/
@@ -49,3 +50,5 @@ do
     do echo $so | python ../../bpRNAStructure/bpRNA_ea.py >> ../../data/library/predicted$l.ste;
     done
 done    
+
+mv ../template.st .
