@@ -3,19 +3,19 @@
 #clear out source data directories if they exist
 rm -rf */
 
-mkdir -p hairpin
-mkdir -p bulge
-mkdir -p internalloop
-for d in ls */
+mkdir -p Hairpins
+mkdir -p Bulges
+mkdir -p InternalLoops
+for d in */
 do
 	#set up folded and designed directories
-    mkdir -p designed
-    mkdir -p folded
+    mkdir -p $d/designed
+    mkdir -p $d/folded
 done
 
 #Run the generation script.
 python generate_libraries.py template.st $1
-for l in ls */
+for l in */
 do
     #for each loop type directory, filter the library 
     python filter_libraries_length.py $l/$1.txt $l/$1.csv;

@@ -16,7 +16,7 @@ import difflib
 ####################
 
 usage= "python3.7 generate_libraries.py <starting filename or componenets list: S1,B1,S2,...> outbase (optional)>"
-sample_size = 2000 #library size
+sample_size = 200 #library size
 
 #Size constraints
 maxstem = 12

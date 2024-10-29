@@ -40,6 +40,9 @@ git clone https://github.com/BLasher113/bpRNA_align.git
 # or use conda
 conda install conda-forge::perl
 
+# in order to use bpRNA.pl, the graph perl module is needed.
+conda install bioconda::perl-graph
+
 # install RNAfold python module, used to fold generated library structures.
 pip install ViennaRNA
 

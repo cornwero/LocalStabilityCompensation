@@ -30,5 +30,9 @@ data/library/summary.json
 #ignore newly generated libraries
 data_generation/library_generation/*/
 
+#ignore bpRNA-1m database and zip file.
+data_generation/bpRNA_data_generation/stFiles
+data_generation/bpRNA_data_generation/stFiles.zip
+
 #ignore StructureComponents.log
-/StructureComponents.log
+StructureComponents.log
