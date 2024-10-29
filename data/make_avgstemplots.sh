@@ -1,3 +1,4 @@
-python3.7 figure_scripts/plot_avgStemReacvsEnergy.py library/libraryDataHairpins.txt
-python3.7 figure_scripts/plot_avgStemReacvsEnergy.py library/libraryDataBulges.txt
-python3.7 figure_scripts/plot_avgStemReacvsEnergy.py library/libraryDataInternalLoops.txt
+mkdir -p figures
+python figure_scripts/plot_avgStemReacvsEnergy.py library/libraryDataHairpins.txt
+python figure_scripts/plot_avgStemReacvsEnergy.py library/libraryDataBulges.txt
+python figure_scripts/plot_avgStemReacvsEnergy.py library/libraryDataInternalLoops.txt

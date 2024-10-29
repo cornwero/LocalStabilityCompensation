@@ -6,14 +6,29 @@
 #ignore mac hidden files
 /.DS_Store
 
-#ignore the bpRNA repository
-bpRNA/
+#ignore the bpRNA_align repository
+bpRNA_align/
 
 #ignore package files
 src/LSC.egg-info
 
 #ignore build files
 build/
+
+#ignore completed figures
+data/figures/
+
+#ignore bpRNA tab delimited files
+data/bpRNA/
+
+#ignore DMS datafiles
+data/library/*.txt
+data/library/*.csv
+data/library/*.ste
+data/library/summary.json
+
+#ignore newly generated libraries
+data_generation/library_generation/*/
 
 #ignore StructureComponents.log
 src/bpRNAStructure/StructureComponents.log

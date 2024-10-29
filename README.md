@@ -20,7 +20,7 @@ this directory contains directories for the generation of bpRNA-1m data from the
 conda create -n LSC python=3.7.2
 
 # Activate the new environment
-conda activate LSC
+source activate LSC
 
 # clone the LSC repository:
 git clone https://github.com/cornwero/LocalStabilityCompensation.git
@@ -31,8 +31,8 @@ cd LocalStabilityCompensation
 # install dependencies
 pip install .
 
-# get bpRNA.pl from github
-git clone https://github.com/hendrixlab/bpRNA.git
+# get bpRNA.pl and the bpRNA_align module from github
+git clone https://github.com/BLasher113/bpRNA_align.git
 
 # intall perl from https://www.cpan.org/
 
