@@ -20,7 +20,8 @@ f = open(txt)
 for line in f:
     if  line.startswith('>'):
         ID = line.strip('>').strip()
-        leng = len(f.next().strip())
+    else:
+        leng = len(line.strip())
         IDs.append(ID)
         lens.append(leng)
 f.close()

@@ -30,15 +30,23 @@ git clone https://github.com/cornwero/LocalStabilityCompensation.git
 # enter the repository:
 cd LocalStabilityCompensation
 
+# download bpRNA.pl and the bpRNA_align module from github and add these to src
+cd src
+git clone https://github.com/BLasher113/bpRNA_align.git
+
+#add the __init__.py and return to repo home
+touch bpRNA_align/__init__.py
+cd ..
+
 # install dependencies
 pip install .
-
-# get bpRNA.pl and the bpRNA_align module from github
-git clone https://github.com/BLasher113/bpRNA_align.git
 
 # intall perl from https://www.cpan.org/
 # or use conda
 conda install conda-forge::perl
+
+#install the perl Graph module
+cpanm Graph
 
 # in order to use bpRNA.pl, the graph perl module is needed.
 conda install bioconda::perl-graph

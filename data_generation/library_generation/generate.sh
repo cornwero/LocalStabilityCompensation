@@ -26,7 +26,7 @@ do
     
     #use bpRNA to generate .st files from the generated .db files
     for f in $l/designed/*.db*
-    do perl ../../bpRNA_align/bpRNA.pl $l/designed/$f;
+    do perl ../../src/bpRNA_align/bpRNA.pl $l/designed/$f;
     done
 
     #move newly generated .st files to the respective directory
@@ -39,7 +39,7 @@ do
 
     #generate .st files for the predicted structures.
     for fo in $l/folded/*.db*
-    do perl ../../bpRNA_align/bpRNA.pl $l/designed/$fo;
+    do perl ../../src/bpRNA_align/bpRNA.pl $l/designed/$fo;
     
     #move the predicted .st files to the respective directory
     mv *.st $l/designed/
