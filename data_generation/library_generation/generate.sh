@@ -16,17 +16,19 @@ done
 #Run the generation script.
 python generate_libraries.py template.st $1
 mv template.st ..
-for l in */
+for d in */
 do
+    l=${d::-1}
+    echo $l
     #for each loop type directory, filter the library 
     python filter_libraries_length.py $l/*.txt $l/*.csv;
 
-    #move filtered libraries to the data directory.
-    mv $l/*_filtered* ../../data/library/
+    #copy filtered libraries to the data directory with the correct naming scheme for figure scripts.
+    cp $l/*_filtered.csv ../../data/library/library$l$1.csv
     
     #use bpRNA to generate .st files from the generated .db files
     for f in $l/designed/*.db*
-    do perl ../../src/bpRNA_align/bpRNA.pl $l/designed/$f;
+        do perl ../../src/bpRNA_align/bpRNA.pl $l/designed/$f;
     done
 
     #move newly generated .st files to the respective directory
@@ -34,12 +36,12 @@ do
 
     #Assemble the structure type energy file and store it in the data directory
     for s in $l/designed/*.st
-    do echo $s | python ../../src/bpRNAStructure/bpRNA_ea.py >> ../../data/library/libraryData$l.ste;
+        do echo $s | python ../../src/bpRNAStructure/bpRNA_ea.py >> ../../data/library/libraryData$l.ste;
     done
 
     #generate .st files for the predicted structures.
     for fo in $l/folded/*.db*
-    do perl ../../src/bpRNA_align/bpRNA.pl $l/designed/$fo;
+        do perl ../../src/bpRNA_align/bpRNA.pl $l/designed/$fo;
     
     #move the predicted .st files to the respective directory
     mv *.st $l/designed/
@@ -47,7 +49,7 @@ do
 
     #assemble the structure type energy file for predicted structures in data/library/
     for so in $l/folded/*.st
-    do echo $so | python ../../src/bpRNAStructure/bpRNA_ea.py >> ../../data/library/predicted$l.ste;
+        do echo $so | python ../../src/bpRNAStructure/bpRNA_ea.py >> ../../data/library/predicted$l.ste;
     done
 done    
 

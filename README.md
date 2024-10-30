@@ -84,10 +84,21 @@ cd data_generation/library_generation/
 perl ../../bpRNA/bpRNA.pl template.db
 
 # generate libraries with a library name
-./generate.sh test_library_
+./generate.sh test
+#if you do not provide a name, the downloaded .csv file in data/library/ will be overridden.
+#You will still be prompted for a name which will be used for RNA IDs and to name the source files in data_generation/library_generation/.
 
 # the hairpin, bulge, and internalloop directories will be cleaned and then populated 
 # with the new library files, and new ste files will appear in data/library
+```
+#### Running figure scripts
+figure scripts are found in data/ and should successfully generate figures with the figshare data.
+Upon generating new libraries, shells scripts should be edited for use with any new filenames from data/bpRNA/ and data/library/.
+```bash
+#if needed, make the shell script executable with 
+chmod +x script.sh
+#Run the script, figures will appear in figures/
+./script.sh
 ```
 if new reactivity data is collected, it should replace data/library/summary.json, and the processData.sh script should be edited with the new filename.
 note: summary.json contains the results of all three libraries.

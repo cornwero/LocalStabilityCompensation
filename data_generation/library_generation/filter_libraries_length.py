@@ -17,13 +17,10 @@ csv = sys.argv[2]
 IDs = []
 lens = []
 f = open(txt)
-for line in f:
-    if  line.startswith('>'):
-        ID = line.strip('>').strip()
-    else:
-        leng = len(line.strip())
-        IDs.append(ID)
-        lens.append(leng)
+fstr = f.read()
+flist = fstr.split('\n')
+IDs,seqs = flist[0::2],flist[1::2]
+IDs = [x.strip('>') for x in IDs]
 f.close()
 
 filterIDs = []
