@@ -17,7 +17,7 @@ this directory contains directories for the generation of bpRNA-1m data from the
 
 ``` bash
 # Create a conda environment
-conda create -n LSC python=3.7.2
+conda create -n LSC python=3.9
 
 # Activate the new environment
 source activate LSC
