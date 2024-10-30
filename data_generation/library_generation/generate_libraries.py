@@ -312,9 +312,9 @@ def construct(struct,variants,randstem,outbase,item,minlen):
         directory+='/'
     i = 1
     all_str = []
-    csv = open(directory+libname+'/'+outbase+libname+'.csv','w')
+    csv = open(directory+libname+'/'+libname+outbase+'.csv','w')
 
-    with open(directory+libname+'/'+outbase+libname+'.txt','w') as f:
+    with open(directory+libname+'/'+libname+outbase+'.txt','w') as f:
         k = list(struct.keys())
         k.sort(key = lambda x: struct[x][0])
         idx = k.index(item)
