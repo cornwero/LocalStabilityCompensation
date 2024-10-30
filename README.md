@@ -57,6 +57,7 @@ wget <figshare link bpRNA-1m>
 # unzip the files
 # move the contents to data/bpRNA/ and data/library/ respectively
 mv data_library/* data/library/
+mkdir data/bpRNA
 mv data_bpRNA/* data/bpRNA/
 ```
 
