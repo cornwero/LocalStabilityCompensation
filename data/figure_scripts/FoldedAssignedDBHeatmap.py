@@ -11,8 +11,7 @@ import matplotlib.colors as colors
 import random
 import difflib
 import sys
-sys.path.insert(0, "/nfs6/BB/Hendrix_Lab/bpRNA_align/git_hub_bpRNA_align/")
-import bpRNA_align_module_old_v2 as alignment
+import bpRNA_align.bpRNA_align_module as alignment
 
 def stemEnergy(constr,pos,loop):
     energy5p = energy3p = 0
@@ -80,11 +79,11 @@ def ld(seq,s):
 def bpRNAalignScore(db_1,db_2,str_1,str_2):
     if len(db_1) <= len(db_2):
         w = int(len(str_1)/2)
-        align_str_1, align_str_2, dist, score, X_matrix, Y_matrix, middle_matrix = alignment.score_alignment(str_1, str_2, db_1, db_2, w)
+        align_str_1, align_str_2, dist, score, X_matrix, Y_matrix, middle_matrix = alignment.score_alignment(str_1, str_2, w)
         return score
     elif len(db_2) < len(db_1):
         w = int(len(str_1)/2)
-        align_str_1, align_str_2, dist, score, X_matrix, Y_matrix, middle_matrix = alignment.score_alignment(str_2, str_1, db_2, db_1, w)    
+        align_str_1, align_str_2, dist, score, X_matrix, Y_matrix, middle_matrix = alignment.score_alignment(str_2, str_1, w)    
         return score
 
 def read_files_list(assigned,folded,alg):
