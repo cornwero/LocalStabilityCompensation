@@ -34,11 +34,8 @@ cd LocalStabilityCompensation
 cd src
 git clone https://github.com/BLasher113/bpRNA_align.git
 
-#add the __init__.py and return to repo home
-touch bpRNA_align/__init__.py
+# return to repository directory and install the project
 cd ..
-
-# install dependencies
 pip install .
 
 # intall perl from https://www.cpan.org/
