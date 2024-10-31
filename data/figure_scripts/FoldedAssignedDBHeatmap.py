@@ -77,13 +77,15 @@ def ld(seq,s):
     return int(distance)
 
 def bpRNAalignScore(db_1,db_2,str_1,str_2):
+    str_1E = alignment.edit_ss_array(str_1,db_1)
+    str_2E = alignment.edit_ss_array(str_2,db_2)
     if len(db_1) <= len(db_2):
         w = int(len(str_1)/2)
-        align_str_1, align_str_2, dist, score, X_matrix, Y_matrix, middle_matrix = alignment.score_alignment(str_1, str_2, w)
+        align_str_1, align_str_2, dist, score, X_matrix, Y_matrix, middle_matrix = alignment.score_alignment(str_1E, str_2E, w)
         return score
     elif len(db_2) < len(db_1):
         w = int(len(str_1)/2)
-        align_str_1, align_str_2, dist, score, X_matrix, Y_matrix, middle_matrix = alignment.score_alignment(str_2, str_1, w)    
+        align_str_1, align_str_2, dist, score, X_matrix, Y_matrix, middle_matrix = alignment.score_alignment(str_2E, str_1E, w)
         return score
 
 def read_files_list(assigned,folded,alg):
