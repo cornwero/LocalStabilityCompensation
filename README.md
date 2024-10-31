@@ -88,6 +88,7 @@ perl ../../bpRNA/bpRNA.pl template.db
 ./generate.sh test
 #if you do not provide a name, the downloaded .csv file in data/library/ will be overridden.
 #You will still be prompted for a name which will be used for RNA IDs and to name the source files in data_generation/library_generation/.
+#You will also be prompted for library size, which is 2000 by default.
 
 # the hairpin, bulge, and internalloop directories will be cleaned and then populated 
 # with the new library files, and new ste files will appear in data/library

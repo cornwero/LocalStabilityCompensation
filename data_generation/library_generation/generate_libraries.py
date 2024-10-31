@@ -16,7 +16,7 @@ import difflib
 ####################
 
 usage= "python3.7 generate_libraries.py <starting filename or componenets list: S1,B1,S2,...> outbase (optional)>"
-sample_size = 200 #library size
+sample_size = int(input("How many sequences should be generated? (Default 2000): ") or "2000")
 
 #Size constraints
 maxstem = 12
@@ -386,7 +386,6 @@ struct = input_mode(compos)
 print(struct)
 #Struct:
 # 'B1': (order (int), seq (str)) ... 
-
 originalseq,originaldb = assemble(struct)
 print('original seq:\n'+ originalseq)
 
