@@ -200,12 +200,12 @@ if len(sys.argv) != 5:
     print(usage)
     sys.exit()
 
-assigned = sys.argv[1]
+designed = sys.argv[1]
 folded = sys.argv[2]
-loop = folded.split('/')[0]
+loop = designed.split('/')[-1].strip("libraryData").strip("s.txt")
 alg = sys.argv[3]
 bin_size = float(sys.argv[4])
-data = read_files_list(assigned,folded,alg)
+data = read_files_list(designed,folded,alg)
 data.sort(key = lambda x:x[1])
 lendata = len(data)
 plt.figure()
