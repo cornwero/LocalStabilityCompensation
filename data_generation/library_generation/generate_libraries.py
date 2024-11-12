@@ -16,7 +16,6 @@ import difflib
 ####################
 
 usage= "python3.7 generate_libraries.py <starting filename or componenets list: S1,B1,S2,...> outbase (optional)>"
-sample_size = int(input("How many sequences should be generated? (Default 2000): ") or "2000")
 
 #Size constraints
 maxstem = 12
@@ -373,15 +372,21 @@ def construct(struct,variants,randstem,outbase,item,minlen):
 # Main #
 ########
 
-if len(sys.argv) not in [2, 3]:
+if len(sys.argv) not in [2, 3, 4]:
     print(usage)
     sys.exit()
 
 compos = sys.argv[1]
-if len(sys.argv) == 3:
+if len(sys.argv) > 2:
     name = sys.argv[2]
 else:
     name = input("Enter a name for your library:")
+if len(sys.argv == 4):
+    sample_size = int(sys.argv[3])
+else:
+    sample_size = int(input("How many sequences should be generated? (Default 2000): ") or "2000")
+
+
 struct = input_mode(compos)
 print(struct)
 #Struct:
