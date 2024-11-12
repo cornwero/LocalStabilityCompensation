@@ -20,9 +20,9 @@ this directory contains directories for the generation of bpRNA-1m data from the
 conda create -n LSC python=3.9
 
 # Activate the new environment
-source activate LSC
+conda activate LSC
 #or
-conda activate LSC 
+source activate LSC 
 
 # clone the LSC repository:
 git clone https://github.com/cornwero/LocalStabilityCompensation.git
@@ -42,20 +42,28 @@ pip install .
 # or use conda
 conda install conda-forge::perl
 
+#For MacOS users, install cpanm:
+brew install cpanminus
 #install the perl Graph module
 cpanm Graph
-
-# in order to use bpRNA.pl, the graph perl module is needed.
-conda install bioconda::perl-graph
 
 # install RNAfold python module, used to fold generated library structures.
 pip install ViennaRNA
 
+#if needed, install wget
+#for MacOS:
+brew install wget
+#for windows:
+download the .exe from https://eternallybored.org/misc/wget/ and move it to system32
+mv ~/Downloads/wget.exe C:/Windows/System32/
+#windows users with curl (as provided with git bash) can also use curl -O __link__ instead of wget.
+
 # get data from figshare
 wget <figshare link library>
 wget <figshare link bpRNA-1m>
+
 # unzip the files
-# move the contents to data/bpRNA/ and data/library/ respectively
+# move the contents of the unzipped folder to data/bpRNA/ and data/library/ respectively
 mv data_library/* data/library/
 mkdir data/bpRNA
 mv data_bpRNA/* data/bpRNA/
@@ -74,7 +82,8 @@ wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/stFiles.zip
 
 # unzip the file stFiles.zip
 
-# Run the shell script generate.sh
+# make generate.sh executable and run the shell script.
+chmod +x generate.sh
 ./generate.sh
 # the data files will appear in data/bpRNA/
 ```
@@ -82,7 +91,8 @@ wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/stFiles.zip
 ```bash
 cd data_generation/library_generation/
 # Optional: edit template.db and run bpRNA to generate template.st
-perl ../../bpRNA/bpRNA.pl template.db
+# Otherwise, generated structures will have the same template and settings as the libraries presented in the manuscript.
+perl ../../src/bpRNA_align/bpRNA.pl template.db
 
 # generate libraries with a library name
 ./generate.sh test
