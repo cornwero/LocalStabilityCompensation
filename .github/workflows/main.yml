@@ -16,21 +16,18 @@ jobs:
       - run: brew install cpanminus
       - run: cpanm Graph
       - run: pip install ViennaRNA
-      - run: echo "This job's status is ${{ job.status }}."
-  Test-Lib-Gen:
-    runs-on: macos-latest
-    steps:
-      - run: ls .
+      - run: echo "Installation Complete"
       - run: cd data_generation/library_generation/
       - run: chmod +x generate.sh
       - run: ./generate.sh test 10
       - run: cd ../..
-  Test-bpRNA-Data-Gen:
-    runs-on: macos-latest
-    steps:
+      - run: echo "New Libraries Generated"
+      - run: ls data/library/
       - run: cd data_generation/bpRNA_data_generation/
       - run: wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/stFiles.zip
       - run: unzip stFiles.zip
       - run: chmod +x generate.sh
       - run: ./generate.sh
       - run: cd ../..
+      - run: ls data/bpRNA/
+      - run: echo "bpRNA datafiles generated"
