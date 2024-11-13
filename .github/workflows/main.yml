@@ -12,7 +12,8 @@ jobs:
       - uses: actions/checkout@master
         with:
           repository: BLasher113/bpRNA_align
-      - run: cd ..
+      - run: ls .
+      - run: cd ../
       - run: pip install .
       - run: brew install perl
       - run: brew install cpanminus
