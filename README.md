@@ -94,6 +94,7 @@ cd data_generation/library_generation/
 perl ../../src/bpRNA_align/bpRNA.pl template.db
 
 # generate libraries with a library name
+chmod +x generate.sh
 ./generate.sh test
 #if you do not provide a name, the downloaded .csv file in data/library/ will be overridden.
 #You will still be prompted for a name which will be used for RNA IDs and to name the source files in data_generation/library_generation/.
