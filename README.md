@@ -53,8 +53,7 @@ pip install ViennaRNA
 #if needed, install wget
 #for MacOS:
 brew install wget
-#for windows:
-download the .exe from https://eternallybored.org/misc/wget/ and move it to system32
+#for windows, download the .exe from https://eternallybored.org/misc/wget/ and move it to system32
 mv ~/Downloads/wget.exe C:/Windows/System32/
 #windows users with curl (as provided with git bash) can also use curl -O __link__ instead of wget.
 
