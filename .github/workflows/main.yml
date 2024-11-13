@@ -10,9 +10,7 @@ jobs:
       - run: echo "cloning bpRNA_align"
       - run: cd src
       - run: git clone https://github.com/BLasher113/bpRNA_align.git
-      - run: ls .
       - run: cd ../
-      - run: ls .
       - run: pip install .
       - run: brew install perl
       - run: brew install cpanminus
@@ -22,6 +20,7 @@ jobs:
   Test-Lib-Gen:
     runs-on: macos-latest
     steps:
+      - run: ls .
       - run: cd data_generation/library_generation/
       - run: chmod +x generate.sh
       - run: ./generate.sh test 10
