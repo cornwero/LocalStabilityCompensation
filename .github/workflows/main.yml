@@ -11,8 +11,7 @@ jobs:
       - run: cd src
       - uses: actions/checkout@master
         with:
-          name: BLasher113/bpRNA_align
-          ref: refs/heads/release
+          repository: BLasher113/bpRNA_align
       - run: cd ..
       - run: pip install .
       - run: brew install perl
