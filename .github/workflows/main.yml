@@ -1,32 +1,37 @@
 name: Testing LSC
 run-name: ${{ github.actor }} is checking installation and function 🚀
-on: [push]
+on: workflow_dispatch
 jobs:
   Test-Install:
     runs-on: macos-latest
     steps:
-      - run: conda create -n LSC python=3.9
-      - run: source activate LSC
-      - name: Check out repository code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
-      - name: clone bpRNA_align and install the module
+      - run: echo "cloning bpRNA_align"
       - run: cd src
-      - uses: actions/checkout@master
-      - with:
-          name: BLasher113/bpRNA_align
-          ref: refs/heads/release
-      - run: cd ..
+      - run: git clone https://github.com/BLasher113/bpRNA_align.git
+      - run: ls .
+      - run: cd ../
+      - run: ls .
       - run: pip install .
       - run: brew install perl
       - run: brew install cpanminus
       - run: cpanm Graph
       - run: pip install ViennaRNA
       - run: echo "This job's status is ${{ job.status }}."
-  Test-Operations:
+  Test-Lib-Gen:
     runs-on: macos-latest
     steps:
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: cd data_generation/library_generation/
+      - run: chmod +x generate.sh
+      - run: ./generate.sh test 10
+      - run: cd ../..
+  Test-bpRNA-Data-Gen:
+    runs-on: macos-latest
+    steps:
+      - run: cd data_generation/bpRNA_data_generation/
+      - run: wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/stFiles.zip
+      - run: unzip stFiles.zip
+      - run: chmod +x generate.sh
+      - run: ./generate.sh
+      - run: cd ../..
