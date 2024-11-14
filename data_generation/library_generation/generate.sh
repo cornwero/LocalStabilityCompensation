@@ -14,7 +14,7 @@ do
 done
 
 #Run the generation script.
-python generate_libraries.py template.st $1
+python generate_libraries.py template.st $1 $2
 mv template.st ..
 for d in */
 do
