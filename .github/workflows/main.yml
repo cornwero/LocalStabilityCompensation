@@ -13,26 +13,30 @@ jobs:
           cd src
           git clone https://github.com/BLasher113/bpRNA_align.git
           cd ..
-      - run: ls
+      - run: ls src
       - run: pip install .
       - run: brew install perl
       - run: brew install cpanminus
       - run: cpanm Graph
       - run: pip install ViennaRNA
       - run: echo "Installation Complete"
-      - run: cd data_generation/library_generation/
-      - run: ls
-      - run: chmod +x generate.sh
-      - run: ./generate.sh test 10
-      - run: cd ../..
+      - name: Generate Libraries
+        run: |
+          cd data_generation/library_generation/
+          ls
+          chmod +x generate.sh
+          ./generate.sh test 10
+          ls Hairpins
+          cd ../..
       - run: echo "New Libraries Generated"
       - run: ls data/library/
-      - run: cd data_generation/bpRNA_data_generation/
-      - run: ls
-      - run: wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/stFiles.zip
-      - run: unzip stFiles.zip
-      - run: chmod +x generate.sh
-      - run: ./generate.sh
-      - run: cd ../..
-      - run: ls data/bpRNA/
+      - name: Generate bpRNAfiles
+        run: |
+          cd data_generation/bpRNA_data_generation/
+          wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/stFiles.zip
+          unzip stFiles.zip
+          chmod +x generate.sh
+          ./generate.sh
+          cd ../..
+          ls data/bpRNA/
       - run: echo "bpRNA datafiles generated"
