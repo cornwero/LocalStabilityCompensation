@@ -381,7 +381,7 @@ if len(sys.argv) > 2:
     name = sys.argv[2]
 else:
     name = input("Enter a name for your library:")
-if len(sys.argv == 4):
+if len(sys.argv) == 4:
     sample_size = int(sys.argv[3])
 else:
     sample_size = int(input("How many sequences should be generated? (Default 2000): ") or "2000")
