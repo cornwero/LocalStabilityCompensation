@@ -18,12 +18,14 @@ jobs:
       - run: pip install ViennaRNA
       - run: echo "Installation Complete"
       - run: cd data_generation/library_generation/
+      - run: ls
       - run: chmod +x generate.sh
       - run: ./generate.sh test 10
       - run: cd ../..
       - run: echo "New Libraries Generated"
       - run: ls data/library/
       - run: cd data_generation/bpRNA_data_generation/
+      - run: ls
       - run: wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/stFiles.zip
       - run: unzip stFiles.zip
       - run: chmod +x generate.sh
