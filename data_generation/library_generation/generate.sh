@@ -35,6 +35,7 @@ do
     mv *.st $l/designed/
 
     #Assemble the structure type energy file and store it in the data directory
+    ls $l/designed
     for s in $l/designed/*.st
         do echo $s | python ../../src/bpRNAStructure/bpRNA_ea.py >> ../../data/library/libraryData$l.ste;
     done
