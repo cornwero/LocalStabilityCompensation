@@ -26,6 +26,7 @@ jobs:
           ls
           chmod +x generate.sh
           ./generate.sh test 10
+          cat Hairpins/designed/test_H1_1.db
           ls Hairpins
           cd ../..
       - run: echo "New Libraries Generated"
