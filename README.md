@@ -38,24 +38,26 @@ git clone https://github.com/BLasher113/bpRNA_align.git
 cd ..
 pip install .
 
-# intall perl from https://www.cpan.org/
+# intall perl from https://www.cpan.org/ 
+# On MacOS homebrew is recommended:
+brew install perl
 # or use conda
 conda install conda-forge::perl
 
-#For MacOS users, install cpanm:
+# For MacOS users, install cpanm:
 brew install cpanminus
-#install the perl Graph module
+# install the perl Graph module
 cpanm Graph
 
-# install RNAfold python module, used to fold generated library structures.
+# install the RNAfold python module, used to fold generated library structures.
 pip install ViennaRNA
 
-#if needed, install wget
-#for MacOS:
+# if needed, install wget
+# for MacOS:
 brew install wget
-#for windows, download the .exe from https://eternallybored.org/misc/wget/ and move it to system32
-mv ~/Downloads/wget.exe C:/Windows/System32/
-#windows users with curl (as provided with git bash) can also use curl -O __link__ instead of wget.
+# for windows, optionally download the wget.exe from https://eternallybored.org/misc/wget/ and move it to system32
+# mv ~/Downloads/wget.exe C:/Windows/System32/
+# windows users with curl (as provided with git bash) can also use curl -O __link__ instead of wget.
 
 # get data from figshare
 wget <figshare link library>
@@ -68,9 +70,14 @@ mkdir data/bpRNA
 mv data_bpRNA/* data/bpRNA/
 ```
 
+Now the directories are set up with the data and requirements to reproduce figures and generate new libraries.
+
 ## Operations:
 
 #### regenerate bpRNA-1m datafiles
+
+In order to reproduce the assembly of tab-delimited datafiles from figshare that are used by the figure scripts, the bpRNA-1m dataset is first needed.
+
 ```bash
 # download bpRNA-1m and unzip the file in data_generation/bpRNA_data_generation/
 
@@ -87,6 +94,9 @@ chmod +x generate.sh
 # the data files will appear in data/bpRNA/
 ```
 #### Generate new libraries
+
+New libraries may be generated according to the parameters used in the manuscript or libraries may be generated from a new template.
+
 ```bash
 cd data_generation/library_generation/
 # Optional: edit template.db and run bpRNA to generate template.st
@@ -103,14 +113,17 @@ chmod +x generate.sh
 # the hairpin, bulge, and internalloop directories will be cleaned and then populated 
 # with the new library files, and new ste files will appear in data/library
 ```
+
 #### Running figure scripts
 figure scripts are found in data/ and should successfully generate figures with the figshare data.
 Upon generating new libraries, shells scripts should be edited for use with any new filenames from data/bpRNA/ and data/library/.
+
 ```bash
 #if needed, make the shell script executable with 
 chmod +x script.sh
 #Run the script, figures will appear in figures/
 ./script.sh
 ```
+
 if new reactivity data is collected, it should replace data/library/summary.json, and the processData.sh script should be edited with the new filename.
 note: summary.json contains the results of all three libraries.
