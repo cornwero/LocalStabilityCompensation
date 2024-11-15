@@ -125,5 +125,5 @@ chmod +x script.sh
 ./script.sh
 ```
 
-if new reactivity data is collected, it should replace data/library/summary.json, and the processData.sh script should be edited with the new filename.
+if new reactivity data is collected, it should replace data/library/summary.json, and the processData.sh script in data/library/ should be edited with the new filename.
 note: summary.json contains the results of all three libraries.
