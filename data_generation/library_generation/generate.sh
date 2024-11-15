@@ -45,7 +45,6 @@ do
     done
     #move the predicted .st files to the respective directory
     mv *.st $l/folded/
-    done
 
     #assemble the structure type energy file for predicted structures in data/library/
     for so in $l/folded/*.st
