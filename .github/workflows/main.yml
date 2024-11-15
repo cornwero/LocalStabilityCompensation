@@ -23,14 +23,11 @@ jobs:
       - name: Generate Libraries
         run: |
           cd data_generation/library_generation/
-          ls
           chmod +x generate.sh
           ./generate.sh test 10
-          cat Hairpins/designed/test_H1_1.db
-          ls Hairpins
           cd ../..
       - run: echo "New Libraries Generated"
-      - run: ls data/library/
+      - run: ls -l data/library/
       - name: Generate bpRNAfiles
         run: |
           cd data_generation/bpRNA_data_generation/
