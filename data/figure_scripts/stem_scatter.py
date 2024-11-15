@@ -94,6 +94,8 @@ plt.legend()
 outstr = 'figures/scatter'+loopstr+'.png'
 if no1nt:
     outstr = outstr.replace('.png','_no1nt.png')
+    #also make a pdf version.
+    plt.savefig(outstr.replace('.png','_no1nt.pdf'))
 if IDfile:
     outstr = outstr.replace('.png','90.png')
 print(outstr)
