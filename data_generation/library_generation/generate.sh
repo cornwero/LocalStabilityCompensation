@@ -18,7 +18,7 @@ python generate_libraries.py template.st $1 $2
 mv template.st ..
 for d in */
 do
-    l=${d::-1}
+    l=${d%/*}
     echo $l
     #for each loop type directory, filter the library 
     python filter_libraries_length.py $l/*.txt $l/*.csv;
