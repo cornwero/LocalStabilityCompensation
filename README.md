@@ -3,8 +3,8 @@ RNA serves both informational and structural roles in all forms of life. To real
 
 ## Repository breakdown:
 ### src/bpRNAStructure:
-This module is responsible for the calculation of folding free energies of individual substructures from structure type (.st) files
-Within the directory is the script bpRNA_ea.py which adds the free energy information to the structure type format, resulting in structure type energy (.ste) files
+This module is responsible for the calculation of folding free energies of individual substructures from structure type (.st) files.
+Within the directory is the script bpRNA_ea.py which adds the free energy information to the structure type format, resulting in structure type energy (.ste) files.
 
 ### data:
 This directory contains the processed datafiles for bpRNA and library reactivity related results, as well as the figure scripts and the directory where completed figures should go.
