@@ -209,7 +209,7 @@ parameters:
 returns a list of variants depending on the sub-structure ID provided.
 '''
 def all_var(ID):
-    size = int(sample_size/100)
+    size = 50
     if 'S' in ID:
         return stem_variants([i*'A' for i in range(minstem,maxstem+1)])
     if 'S' in ID and 'r' in ID:
