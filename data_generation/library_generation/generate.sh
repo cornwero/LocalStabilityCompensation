@@ -35,7 +35,6 @@ do
     mv *.st $l/designed/
 
     #Assemble the structure type energy file and store it in the data directory
-    ls $l/designed
     for s in $l/designed/*.st
         do echo $s | python ../../src/bpRNAStructure/bpRNA_ea.py >> ../../data/library/libraryData$l.ste;
     done
@@ -43,9 +42,9 @@ do
     #generate .st files for the predicted structures.
     for fo in $l/folded/*.db*
         do perl ../../src/bpRNA_align/bpRNA.pl $fo;
-    
+    done
     #move the predicted .st files to the respective directory
-    mv *.st $l/designed/
+    mv *.st $l/folded/
     done
 
     #assemble the structure type energy file for predicted structures in data/library/
