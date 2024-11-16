@@ -92,12 +92,12 @@ plt.xlabel(loopstr+r' $\Delta$G (kcal/mol)',fontsize = font)
 plt.ylabel(r'Stem  $\Delta$G (kcal/mol)',fontsize = font)
 plt.legend()
 outstr = 'figures/scatter'+loopstr+'.png'
+if IDfile:
+    outstr = outstr.replace('.png','90.png')
 if no1nt:
     outstr = outstr.replace('.png','_no1nt.png')
     #also make a pdf version.
-    plt.savefig(outstr.replace('.png','_no1nt.pdf'))
-if IDfile:
-    outstr = outstr.replace('.png','90.png')
+    plt.savefig(outstr.replace('.png','.pdf'))
 print(outstr)
 plt.savefig(outstr,dpi = 300)
 plt.clf()
