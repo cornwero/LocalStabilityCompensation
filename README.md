@@ -2,13 +2,13 @@
 RNA serves both informational and structural roles in all forms of life. To realize the potential of  RNA biotechnology for therapeutics, we need to better characterize the “design rules” for RNA. While global metrics such as the minimum free energy are widely used, they are at odds with naturally occurring structures and incompatible with established design rules. Here, we introduce local stability compensation (LSC), the balance in the stabilizing free energy of stems and the destabilizing free energy of adjacent loops. We show that the signatures of LSC are present in a large database of naturally occurring structures, particularly for bulges and adjacent stems. The diversity of net free energy—the sum of stem and loop ΔG — of naturally occurring structures, is consistent with the diverse requirements for structural stability present in different RNA families. We systematically generated libraries of thousands of RNAs that investigated the space of stem vs loop ΔG combinations, and revealed that LSC affects stem reactivity almost exclusively in the local region. Our results suggest thermodynamic modularity in RNA, and we suggest that the relationship between LSC and local folding behavior may serve as a constraint on RNA structure prediction and design.
 
 ## Repository breakdown:
-### src/bpRNAStructure:
-This module is responsible for the calculation of folding free energies of individual substructures from structure type (.st) files.
-Within the directory is the script bpRNA_ea.py which adds the free energy information to the structure type format, resulting in structure type energy (.ste) files.
-
 ### data:
 This directory contains the processed datafiles for bpRNA and library reactivity related results, as well as the figure scripts and the directory where completed figures should go.
 shell scripts are provided to run the figure scripts with the relevant command line arguments.
+
+### src/bpRNAStructure:
+This module is responsible for the calculation of folding free energies of individual substructures from structure type (.st) files.
+Within the directory is the script bpRNA_ea.py which adds the free energy information to the structure type format, resulting in structure type energy (.ste) files.
 
 ### data_generation:
 this directory contains directories for the generation of bpRNA-1m data from the bpRNA-1m database and for the random generation of sequence libraries used for the DMS reactivity experiments. 
@@ -38,21 +38,10 @@ git clone https://github.com/BLasher113/bpRNA_align.git
 cd ..
 pip install .
 
-# intall perl from https://www.cpan.org/ 
-# On MacOS homebrew is recommended:
-brew install perl
-# or use conda
-conda install conda-forge::perl
-
-# For MacOS users, install cpanm:
-brew install cpanminus
-# install the perl Graph module
-cpanm Graph
-
 # install the RNAfold python module, used to fold generated library structures.
 pip install ViennaRNA
 
-# if needed, install wget
+# if not already available, install wget
 # for MacOS:
 brew install wget
 # for windows, optionally download the wget.exe from https://eternallybored.org/misc/wget/ and move it to system32
@@ -60,22 +49,50 @@ brew install wget
 # windows users with curl (as provided with git bash) can also use curl -O __link__ instead of wget.
 
 # get data from figshare
-wget <figshare link library>
-wget <figshare link bpRNA-1m>
+wget https://figshare.com/ndownloader/articles/27281064/versions/1
 
 # unzip the files
-# move the contents of the unzipped folder to data/bpRNA/ and data/library/ respectively
+# move the contents of the unzipped folders bpRNA_data and library_data to data/bpRNA/ and data/library/ respectively
 mv data_library/* data/library/
 mkdir data/bpRNA
 mv data_bpRNA/* data/bpRNA/
+
+# Figures may now be generated in data/
+
+# OPTIONAL:
+# For reproducing bpRNA-1m data from source and for generating and annotating new libraries with energy data, additional steps are needed.
+# Installing the perl Graph module as follows requires root access.
+
+# intall perl from https://www.cpan.org/ 
+# On MacOS homebrew is recommended:
+brew install perl
+# or use conda
+conda install perl
+
+# For MacOS users, install cpanm:
+brew install cpanminus
+# install the perl Graph module
+cpanm Graph
 ```
 
 Now the directories are set up with the data and requirements to reproduce figures and generate new libraries.
 
 ## Operations:
 
-#### regenerate bpRNA-1m datafiles
 
+#### Running figure scripts
+figure scripts are found in data/ and should successfully generate figures with the figshare data.
+If new libraries are generated, shell scripts should be edited for use with any new filenames from data/bpRNA/ and data/library/.
+
+```bash
+#if needed, make the shell script executable with 
+chmod +x script.sh
+#Run the script, figures will appear in figures/
+./script.sh
+```
+
+#### regenerate bpRNA-1m datafiles
+This operation is not essential but may be done to reproduce the processed datafiles directly from bpRNA-1m.
 In order to reproduce the assembly of tab-delimited datafiles from figshare that are used by the figure scripts, the bpRNA-1m dataset is first needed.
 
 ```bash
@@ -94,7 +111,7 @@ chmod +x generate.sh
 # the data files will appear in data/bpRNA/
 ```
 #### Generate new libraries
-
+This operation is not essential for reproducing analysis but may be used if further libraries should be generated or to reproduce the energy annotation approach.
 New libraries may be generated according to the parameters used in the manuscript or libraries may be generated from a new template.
 
 ```bash
@@ -112,17 +129,6 @@ chmod +x generate.sh
 
 # the hairpin, bulge, and internalloop directories will be cleaned and then populated 
 # with the new library files, and new ste files will appear in data/library
-```
-
-#### Running figure scripts
-figure scripts are found in data/ and should successfully generate figures with the figshare data.
-Upon generating new libraries, shells scripts should be edited for use with any new filenames from data/bpRNA/ and data/library/.
-
-```bash
-#if needed, make the shell script executable with 
-chmod +x script.sh
-#Run the script, figures will appear in figures/
-./script.sh
 ```
 
 if new reactivity data is collected, it should replace data/library/summary.json, and the processData.sh script in data/library/ should be edited with the new filename.
