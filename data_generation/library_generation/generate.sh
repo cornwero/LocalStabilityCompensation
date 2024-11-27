@@ -15,6 +15,7 @@ done
 
 #Run the generation script.
 python generate_libraries.py template.st $1 $2
+echo "Sequence Libraries have been generated. Filtering and annotating with bpRNA.pl and bpRNA_ea.py..."
 mv template.st ..
 for d in */
 do
