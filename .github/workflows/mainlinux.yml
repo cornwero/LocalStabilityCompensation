@@ -11,15 +11,16 @@ jobs:
           source ${CONDA}/bin/activate LSC
       - uses: actions/checkout@v4
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "cloning bpRNA_align"
       - name: Clone bpRNA_align
         run: |
           cd src
           git clone https://github.com/BLasher113/bpRNA_align.git
           cd ..
-      - run: ls src
-      - run: pip install .
-      - run: pip install ViennaRNA
+      - name: Environment setup
+        run: |
+          source ${CONDA}/bin/activate LSC
+          pip install .
+          pip install ViennaRNA
       - run: wget -O figsharedata.zip https://figshare.com/ndownloader/articles/27281064/versions/1
       - run: ls
       - run: unzip figsharedata.zip
