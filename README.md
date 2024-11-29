@@ -61,7 +61,7 @@ mv data_bpRNA/* data/bpRNA/
 
 # OPTIONAL:
 # For reproducing bpRNA-1m data from source and for generating and annotating new libraries with energy data, additional steps are needed.
-# Installing the perl Graph module as follows requires root access.
+# For installing the perl Graph module as follows, it is recommended to install directly and not use a conda environment.
 
 # intall perl from https://www.cpan.org/ 
 # On MacOS homebrew is recommended:
