@@ -40,6 +40,7 @@ jobs:
       - run: echo "bpRNA datafiles generated"
       - run: wget https://figshare.com/ndownloader/articles/27281064/versions/1
       - run: unzip *.zip
+      - run: unzip *.zip
       - run: mv bpRNA_data/* data/bpRNA/
       - run: mv library_data/* data/library/
       - name: Run figure scripts
