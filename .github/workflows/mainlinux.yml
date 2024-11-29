@@ -15,9 +15,7 @@ jobs:
           cd ..
       - run: ls src
       - run: pip install .
-      - run: brew install perl
-      - run: brew install cpanminus
-      - run: cpanm Graph
+      - run: sudo apt-get install Graph
       - run: pip install ViennaRNA
       - run: echo "Installation Complete"
       - name: Generate Libraries
