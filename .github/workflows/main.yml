@@ -41,10 +41,8 @@ jobs:
       - run: wget -O figsharedata.zip https://figshare.com/ndownloader/articles/27281064/versions/1
       - run: ls
       - run: unzip figsharedata.zip
-      - run: unzip bpRNA_data.zip
-      - run: unzip library_data.zip
-      - run: mv bpRNA_data/* data/bpRNA/
-      - run: mv library_data/* data/library/
+      - run: unzip bpRNA_data.zip -d data/bpRNA
+      - run: unzip library_data.zip -d data/library
       - name: Run figure scripts
         run: |
           cd data/
