@@ -5,6 +5,10 @@ jobs:
   Test-Install:
     runs-on: ubuntu-latest
     steps:
+      - name: Environment install
+        run: |
+          ${CONDA}/bin/conda create -n LSC python=3.9
+          source ${CONDA}/bin/activate LSC
       - uses: actions/checkout@v4
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "cloning bpRNA_align"
