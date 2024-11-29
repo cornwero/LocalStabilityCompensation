@@ -29,6 +29,7 @@ jobs:
       - run: unzip library_data.zip -d data/library
       - name: Run figure scripts
         run: |
+          source ${CONDA}/bin/activate LSC
           cd data/
           chmod +x make_AUROC_curve_fits.sh
           ./make_AUROC_curve_fits.sh
