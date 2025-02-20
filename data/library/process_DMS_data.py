@@ -48,14 +48,14 @@ def stemEnergy(RNAcont,pos,loop):
                 range5p = list(range(stemstart-1,stemstop))+list(range(compstart-1,compstop))
                 if 'H' in loop:
                     rangestop = compstop
-                    return energy5p,0,list(range(rangestart-1,rangestop))
+                    return energy5p,0,list(range(rangestart,rangestop))
                 revrangestop = compstop
             if stemstart == end+1:#only bulges and internal loops can do this since hairpins are closed by the reverse strand, not a new stem.
                 rangestop = stemstop
                 revrangestart = compstart
                 energy3p = energy
                 range3p = list(range(stemstart-1,stemstop))+list(range(compstart-1,compstop))
-    localrange = list(range(rangestart-1,rangestop))+list(range(revrangestart-1,revrangestop))
+    localrange = list(range(rangestart,rangestop))+list(range(revrangestart,revrangestop))
     return energy5p,energy3p,localrange
 
 '''
@@ -193,7 +193,11 @@ reac: the reactivity dictionary that maps an RNA ID to its reactivity list.
 localrange: the range of residues corresponding to the local, variable region.
 '''
 def findAvgReactivity(RNAcont,reac,localrange):
+    
     seq = RNAcont[3]
+    print("\n"+("0123456789"*20)[:len(seq)])
+    print(seq)
+    print(RNAcont[4])
     for line in RNAcont:
         if line.startswith(loop):
             pos = line.strip().split(' ')[1].split('..')
@@ -204,7 +208,14 @@ def findAvgReactivity(RNAcont,reac,localrange):
                 looprange = findInternalLoopRange(RNAcont)
             stemrange = [i for i in localrange if i not in looprange]
             controlrange = findControlStemRange(RNAcont)
-            controllooprange = list(range(28,31))
+            controllooprange = list(range(27,30))
+            
+            print("localrange: "+str(localrange))
+            print("stemrange: "+str(stemrange))
+            print("looprange: "+str(looprange))
+            print("controlrange: "+str(controlrange))
+            print("controllooprange: "+str(controllooprange))
+
             Data = []
             for i in range(len(reac)):
                 if i in stemrange and seq[i] in 'AC':
@@ -228,7 +239,7 @@ def findAvgReactivity(RNAcont,reac,localrange):
             return np.average(Data), np.average(ControlData),LoopDataPoint,np.average(ControlLoopData)
 '''
 Function: checkPolyC
-Description: Greater than 4 consecutive C residues in a loop resulted in signal defects. Return true if the RNA loop has more than 4 C residues.
+Description: Greater than 5 consecutive C residues in a loop resulted in signal defects. Return true if the RNA loop has more than 4 C residues.
 Parameters:
 RNAcont: a list of lines belonging to an RNA from a .ste file.
 '''
@@ -237,7 +248,7 @@ def checkPolyC(RNAcont):
     for line in RNAcont:
         if line.startswith('H2') and ' ' in line:
             hpseq = line.strip().split(' ')[2].strip('""')
-            if 'CCCCC' in hpseq:
+            if 'CCCCCC' in hpseq:
                 return True
     return False
 

@@ -24,6 +24,7 @@ def readData(filename):
                 controldata.append((netE,math.log(distalStemReact)))
                 loopdata.append((netE,math.log(localLoopReact)))
                 controlloopdata.append((netE,math.log(distalLoopReact)))
+    print(len(data))
     return data,controldata,loopdata,controlloopdata
 
 ########
