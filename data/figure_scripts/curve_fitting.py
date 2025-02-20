@@ -91,7 +91,7 @@ loop = filename.split('/')[-1].strip('libraryData').strip('s.txt')
 fitted = normalized_inverse_hill_equation(posbins, popt[0], popt[1], popt[2])
 fitted = fitted + minavg
 fitted = 1-fitted
-bins = bins+minbin
+bins = posbins+minbin
 FONTSIZE = 20
 plt.plot(bins,avgs,ls='none',marker = '.',markersize = 8)
 plt.plot(bins,fitted, color = 'k')
