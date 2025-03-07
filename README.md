@@ -110,6 +110,37 @@ chmod +x generate.sh
 ./generate.sh
 # the data files will appear in data/bpRNA/
 ```
+
+#### re-fold bpRNA-1m RFAM structures using existing base pairs as a constraint
+This operation is not needed for reproducing figures, but serves to replicate the refolding procedure.
+
+```bash
+cd data_generation/bpRNA_data_generation
+
+#get the bpRNA-1m dbn files:
+wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/dbnFiles.zip
+
+# unzip the file dbnFiles.zip
+
+# make foldRFAM.sh executable.
+chmod +x foldRFAM.sh
+
+#run the script on RFAM entries.
+./foldRFAM.sh bpRNA_RFAM
+
+#generate datafiles with the specification 'refold'
+chmod +x generate.sh
+./generate.sh refold
+
+#if RNAfold is not installed, you may follow the above steps with foldRFAM_alternative.sh (dbnFiles.zip unnecessary).
+#However, this approach does not properly apply hard constraints to the RFAM RNAs.
+
+chmod +x foldRFAM_alternative.sh
+./foldRFAM_alternative.sh
+chmod +x generate.sh
+./generate.sh refold
+```
+
 #### Generate new libraries
 This operation is not essential for reproducing analysis but may be used if further libraries should be generated or to reproduce the energy annotation approach.
 New libraries may be generated according to the parameters used in the manuscript or libraries may be generated from a new template.
