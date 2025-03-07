@@ -215,14 +215,15 @@ for i in range(len(bins)):
     up,down = list(zip(*CIs[i]))
     up,down,stem = np.array(up),np.array(down),np.array(stemAvgs[i])
     label = str(bins[i])+' $\leq$ net $\Delta$G < '+str(bins[i+1])
-    if len(stem) < 8:
+    if len(stem) < 6:
         end = len(stem)
-    else: end = 8
-    plt.plot(list(range(1,end+1)),stem[:8],color = colors[i], markersize = 5, label = label)
-    plt.fill_between(list(range(1,end+1)),up[:8],down[:8], color = colors[i], alpha = 0.3)
+    else: end = 6
+    print(stem)
+    plt.plot(list(range(1,end+1)),stem[:6],color = colors[i], markersize = 5, label = label)
+    plt.fill_between(list(range(1,end+1)),up[:6],down[:6], color = colors[i], alpha = 0.3)
 
 plt.legend()
-plt.ylim(np.log(0.00001), np.log(0.02))
+plt.ylim(0, 0.02)
 plt.xlabel('Position from terminal mismatch',fontsize = 16)
 plt.ylabel('local nucleotide reactivity',fontsize = 16)
 if loopChar[0] in 'Hh':loop = 'Hairpin'
