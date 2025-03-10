@@ -34,16 +34,16 @@ def read_data(infile, IDdict, no1nt,loop):
             loopE = stemE = 0
             if loop == 'Hairpin':
                 loopE = float(info[5])
-                stemE = float(info[7]) #Haipin energy and stem energy
+                stemE = float(info[7]) #Hairpin energy and stem energy
             if loop == 'Bulge':
                 l = int(info[4])
                 if l == 1 and no1nt:
                     continue
                 loopE = float(info[5])
-                stemE = float(info[7])+float(info[9]) #Bulge energy, 5p stem, and 3p stem energy
+                stemE = (float(info[7])+float(info[9]))/2 #Bulge energy, 5p stem, and 3p stem energy
             if loop == 'InternalLoop':
                 loopE = float(info[4])
-                stemE = float(info[6])+float(info[8]) #Internal loop energy, 5p stem, and 3p stem energy
+                stemE = (float(info[6])+float(info[8]))/2 #Internal loop energy, 5p stem, and 3p stem energy
             if loopE < -1.5 or loopE > 11 or stemE < -35:
                 continue
             loopdata.append(loopE)
@@ -55,7 +55,7 @@ def calculate_avg(loop,stem,b,bnext):
     for i in range(len(loop)):
         if loop[i] >= b and loop[i] < bnext:
             stems_b.append(stem[i])
-    if len(stems_b) < 20:
+    if len(stems_b) < 30:
         return float(0)
     return np.median(stems_b)
 
