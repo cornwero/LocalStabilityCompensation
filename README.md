@@ -115,6 +115,10 @@ chmod +x generate.sh
 This operation is not needed for reproducing figures, but serves to replicate the refolding procedure.
 
 ```bash
+#install vienna RNA to use RNAfold.
+conda install bioconda::viennarna
+
+#change directory to the bpRNA data generation directory.
 cd data_generation/bpRNA_data_generation
 
 #get the bpRNA-1m dbn files:
