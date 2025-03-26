@@ -27,7 +27,7 @@ def make_stemdict(Hfile,Bfile,Ifile):
     with open(Bfile) as f:
         for line in f:
             if not line.startswith('rna_name'):
-#rna_name        rna_ID  rna_Type        bulgeLabel      bulgeLen        bulgeEnergy     label5p energy5p        label3p energy3p        compscore
+                #rna_name        rna_ID  rna_Type        bulgeLabel      bulgeLen        bulgeEnergy     label5p energy5p        label3p energy3p        compscore
                 ID,num,rnatype,blabel,blen,benergy,s5label,s5energy,s3label,s3energy,nete = line.strip().split('\t')
                 if ID not in stems['B']:
                     stems['B'][ID] = []
@@ -35,7 +35,7 @@ def make_stemdict(Hfile,Bfile,Ifile):
     with open(Ifile) as f:
         for line in f:
             if not line.startswith('rna_name'):
-#rna_name        rna_ID  rna_Type        internalLoopLabel       internalLoopEnergy      label5p energy5p        label3p energy3p        compscore
+                #rna_name        rna_ID  rna_Type        internalLoopLabel       internalLoopEnergy      label5p energy5p        label3p energy3p        compscore
                 ID,num,rnatype,ilabel,ienergy,s5label,s5energy,s3label,s3energy,nete = line.strip().split('\t')
                 if ID not in stems['I']:
                     stems['I'][ID] = []
@@ -68,8 +68,8 @@ def rotate_stem(ID,subid,substemdict):
     return rotated[i]
     
 #Read Data
-#This function should read data with some ID, and the compensatioin score.
-def read_data(filename,IDs1m90,stemdict,loop):
+#This function should read data with some ID, and the compensatioin score, incorporating the rotation control.
+def read_data_rotation(filename,IDs1m90,stemdict,loop):
     data = []
     control = []
     with open(filename) as f:
@@ -79,7 +79,7 @@ def read_data(filename,IDs1m90,stemdict,loop):
                 ID,subid,netE = [info[0],info[3],info[-1]]
                 if ID in IDs1m90 or not IDs1m90:
                     if abs(float(netE)) <= 80:
-                        if len(stemdict[subid[0]][ID]) > 3: #need 4 or more loops to do a good rotation, can reduce if needed.
+                        if len(stemdict[subid[0]][ID]) > 3: #need 4 or more stems to do a good rotation, can reduce if needed.
                             data.append(float(info[-1])) #store ID and compensation score.
                             if loop in 'hH':
                                 control.append(float(info[5])+rotate_stem(ID,subid,stemdict['H']))
@@ -87,6 +87,7 @@ def read_data(filename,IDs1m90,stemdict,loop):
                                 control.append(float(info[5])+rotate_stem(ID,subid,stemdict['B']))
                             if loop in 'Ii':
                                 control.append(float(info[4])+rotate_stem(ID,subid,stemdict['I']))
+    print("num data, num control")
     print(len(data),len(control))
     return data,control
 
@@ -160,7 +161,7 @@ def make_bars(Hdata,Hcontrol,Bdata,Bcontrol,Idata,Icontrol,d1m90):
     if d1m90:
         str1m90 = '90'
     print("making big fold change histogram")
-    bins = list(np.arange(-30,15,1))
+    bins = list(np.arange(-30,15,0.5))
     H1 = np.histogram(Hdata,density = True, bins = bins)[0]
     H2 = scrub0(np.histogram(Hcontrol,density = True, bins = bins)[0])
     B1 = np.histogram(Bdata,density = True, bins = bins)[0]
@@ -189,7 +190,7 @@ def make_bars(Hdata,Hcontrol,Bdata,Bcontrol,Idata,Icontrol,d1m90):
     plt.savefig(out)
     plt.clf()
     
-    bins = list(np.arange(-15,6,1))
+    bins = list(np.arange(-15,6,0.5))
     H1 = np.histogram(Hdata,density = True, bins = bins)[0]
     H2 = scrub0(np.histogram(Hcontrol,density = True, bins = bins)[0])
     B1 = np.histogram(Bdata,density = True, bins = bins)[0]
@@ -205,7 +206,7 @@ def make_bars(Hdata,Hcontrol,Bdata,Bcontrol,Idata,Icontrol,d1m90):
     Ifold[Ifold == -inf] = 0
     plotbins = list(range(len(Hfold)))
     allfold = np.concatenate((Hfold,Bfold,Ifold))
-    print(len(allfold))
+    #print(len(allfold))
     ymin = round(min(allfold),2)*1.25
     ymax = round(max(allfold),2)*1.25
     print(ymin,ymax)
@@ -263,10 +264,11 @@ d1m90 = {}
 stems = make_stemdict(Hfile,Bfile,Ifile)
 #teststem = list(stems.keys())
 #print(teststem[0])
-#print(stems[teststem[0]])
-Hdata,Hcontrol = read_data(Hfile,d1m90,stems,'H')
-Bdata,Bcontrol = read_data(Bfile,d1m90,stems,'B')
-Idata, Icontrol = read_data(Ifile,d1m90,stems,'I')
+print(stems['H']['bpRNA_CRW_4'])
+Hdata,Hcontrol = read_data_rotation(Hfile,d1m90,stems,'H')
+Bdata,Bcontrol = read_data_rotation(Bfile,d1m90,stems,'B')
+Idata, Icontrol = read_data_rotation(Ifile,d1m90,stems,'I')
+print("\nbpRNA-1m KS values")
 print(ks_2samp(Hdata,Hcontrol))
 print(ks_2samp(Bdata,Bcontrol))
 print(ks_2samp(Idata,Icontrol))
@@ -275,9 +277,10 @@ make_histogram(Hdata,Bdata,Idata,d1m90,'')
 make_violins(Hdata,Hcontrol,Bdata,Bcontrol,Idata,Icontrol,d1m90)
 make_bars(Hdata,Hcontrol,Bdata,Bcontrol,Idata,Icontrol,d1m90)
 d1m90 = read_IDlist(f1m90IDs)
-Hdata, Hcontrol = read_data(Hfile,d1m90,stems,'H')
-Bdata, Bcontrol = read_data(Bfile,d1m90,stems,'B')
-Idata, Icontrol = read_data(Ifile,d1m90,stems,'I')
+Hdata, Hcontrol = read_data_rotation(Hfile,d1m90,stems,'H')
+Bdata, Bcontrol = read_data_rotation(Bfile,d1m90,stems,'B')
+Idata, Icontrol = read_data_rotation(Ifile,d1m90,stems,'I')
+print("\nbpRNA-1m90 KS values")
 print(ks_2samp(Hdata,Hcontrol))
 print(ks_2samp(Bdata,Bcontrol))
 print(ks_2samp(Idata,Icontrol))

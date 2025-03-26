@@ -1,4 +1,3 @@
-from asyncore import loop
 import math
 from scipy import stats
 import sys
@@ -46,7 +45,7 @@ for loopfile in [hp_filename,bulge_filename,intloop_filename]:
     row = looptype
     for subdata in [loopE,stemE,netE]:
         R2,P = get_correlation(subdata,localAUROC)
-        row += '\t'+R2
+        row += '\t'+R2+" "+str(P)
     print(row+'\n')
 print("Avg Reactivity")
 print("Loop Type\tloopE\tstemE\tNetE")
@@ -57,5 +56,5 @@ for loopfile in [hp_filename,bulge_filename,intloop_filename]:
     row = looptype
     for subdata in [loopE,stemE,netE]:
         R2,P = get_correlation(subdata,localStemReact)
-        row += '\t'+R2
+        row += '\t'+R2+" "+str(P)
     print(row+'\n')

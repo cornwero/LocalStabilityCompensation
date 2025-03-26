@@ -163,7 +163,7 @@ def make_subclasses_ridgeplot(df,loop,m90):
     grouped = df.groupby("subclasses", sort=False)
 
     plt.figure(figsize=(6.4,14.4))
-    fig,axes = joypy.joyplot(grouped,column='netE', color = 'b',ylim='own',overlap = 0.25, x_range=[-25,10]) 
+    fig,axes = joypy.joyplot(grouped,column='netE', figsize=(6.4,14.4), color = 'b',ylim='own',overlap = 0.25, x_range=[-25,10]) 
 
     ax = axes[-1]
     plt.xlabel('Net $\Delta$G (kcal/mol)',fontsize = 16)
@@ -176,7 +176,7 @@ def make_subclasses_ridgeplot(df,loop,m90):
     outfile = 'figures/ridgeplot_detailed_netE90_'+loop+'.pdf'
     if not bpRNA1m90:
         outfile = outfile.replace('90','')
-    plt.savefig(outfile, bbox_inches = "tight")
+    plt.savefig(outfile)#, bbox_inches = "tight")
 
 def make_classes_ridgeplot(df,loop,m90):
     typelist = [
@@ -244,7 +244,7 @@ def make_thermo_detailed_ridgeplot(df,loop,m90):
     dataDF = df[['subclasses','nonthermo_netE','thermo_netE']]
     grouped = dataDF.groupby('subclasses',sort=False)
 
-    fig,axes = joypy.joyplot(grouped,ylim='own',overlap = 0.25,alpha=0.5, x_range=[-20,10]) 
+    fig,axes = joypy.joyplot(grouped,ylim='own', figsize = (6.4, (4.8/10.0) * len(typelist)),overlap = 0.25,alpha=0.5, x_range=[-20,10]) 
     ax = axes[-1]
     plt.xlabel('Net $\Delta$G (kcal/mol)',fontsize = 16)
     ax.yaxis.set_label_position("right")
