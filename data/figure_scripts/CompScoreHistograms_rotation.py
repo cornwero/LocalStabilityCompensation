@@ -13,6 +13,10 @@ import math
 # This script is designed to visualize the compensation scores of hairpins, bulges and internal loops
 
 usage = 'python'+sys.argv[0]+' <hairpin_scores.txt> <bulge_scores.txt> <internalloop_scores.txt> <1m90_IDs.txt>'
+if 'refold' in sys.argv[1]:
+    refold = True
+else:
+    refold=False
 
 def make_stemdict(Hfile,Bfile,Ifile):
     stems = {'H':{},'B':{},'I':{}} #dict of RNA IDs to a list of stem subIDs and energies
@@ -186,6 +190,8 @@ def make_bars(Hdata,Hcontrol,Bdata,Bcontrol,Idata,Icontrol,d1m90):
     plt.ylabel('difference from control',fontsize = 16)
     plt.legend()
     out = 'figures/compensation_rotate'+str1m90+'_controlfc.pdf'
+    if refold:
+        out = out.replace('.pdf','refold.pdf')
     print(out)
     plt.savefig(out)
     plt.clf()
@@ -226,6 +232,8 @@ def make_bars(Hdata,Hcontrol,Bdata,Bcontrol,Idata,Icontrol,d1m90):
     plt.xlabel(r'Net $\Delta$G (kcal/mol)',fontsize = 16)
     plt.xticks(list(range(len(bins)))[::2],list(bins)[::2])
     out = 'figures/compensation_rotate'+str1m90+'_controlfc_inset.pdf'
+    if refold:
+        out = out.replace('.pdf','refold.pdf')
     print(out)
     plt.savefig(out)
     plt.clf()

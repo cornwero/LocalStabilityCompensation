@@ -1,5 +1,6 @@
 mkdir -p figures
 python figure_scripts/CompScoreHistograms_rotation.py bpRNA/refold/hairpins.txt bpRNA/refold/bulges.txt bpRNA/refold/internalloops.txt bpRNA/bpRNA_1m_90_IDs.txt
+python figure_scripts/CompScoreHistograms_rotation.py bpRNA/hairpins.txt bpRNA/bulges.txt bpRNA/internalloops.txt bpRNA/bpRNA_1m_90_IDs.txt
 
 python figure_scripts/CompScoreLibraryHist.py bpRNA/refold/hairpins.txt  library/libraryDataHairpins.txt bpRNA/bpRNA_1m_90_IDs.txt
 python figure_scripts/CompScoreLibraryHist.py bpRNA/refold/bulges.txt library/libraryDataBulges.txt bpRNA/bpRNA_1m_90_IDs.txt

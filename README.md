@@ -111,7 +111,7 @@ chmod +x generate.sh
 # the data files will appear in data/bpRNA/
 ```
 
-#### re-fold bpRNA-1m RFAM structures using existing base pairs as a constraint
+#### re-fold bpRNA-1m RFAM and CRW structures using existing base pairs as a constraint
 This operation is not needed for reproducing figures, but serves to replicate the refolding procedure.
 
 ```bash
@@ -127,20 +127,22 @@ wget https://bprna.cgrb.oregonstate.edu/bpRNA_1m/dbnFiles.zip
 # unzip the file dbnFiles.zip
 
 # make foldRFAM.sh executable.
-chmod +x foldRFAM.sh
+chmod +x refold.sh
 
 #run the script on RFAM entries.
-./foldRFAM.sh bpRNA_RFAM
+./refold.sh bpRNA_RFAM
+#run the script on CRW entries.
+./refold.sh bpRNA_CRW
 
 #generate datafiles with the specification 'refold'
 chmod +x generate.sh
 ./generate.sh refold
 
-#if RNAfold is not installed, you may follow the above steps with foldRFAM_alternative.sh (dbnFiles.zip unnecessary).
+#if RNAfold is not installed, you may follow the above steps with refold_alternative.sh (dbnFiles.zip unnecessary).
 #However, this approach does not properly apply hard constraints to the RFAM RNAs.
 
-chmod +x foldRFAM_alternative.sh
-./foldRFAM_alternative.sh
+chmod +x refold_alternative.sh
+./refold_alternative.sh
 chmod +x generate.sh
 ./generate.sh refold
 ```

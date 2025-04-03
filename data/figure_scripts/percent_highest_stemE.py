@@ -62,7 +62,7 @@ def calculate_percent(loop,stem,b,bnext,percent):
 def bin_data(loop,stem,b,bnext):
     stems_b = []
     for i in range(len(loop)):
-        if loop[i] >= b and loop[i] < bnext and stem[i] > -15:
+        if loop[i] >= b and loop[i] < bnext:
             stems_b.append(stem[i])
     if len(stems_b) < 0.005*len(loop): #don't unfairly count very low population bins.
         return float(0)
@@ -76,6 +76,10 @@ def strip_0s(data,bins):
             newbins.append(bins[i])
             newdata.append(data[i])
     return (newbins,newdata)
+
+########
+# MAIN #
+########
 
 if len(sys.argv) != 4:
     print(usage)
@@ -103,16 +107,15 @@ for i in range(len(bins)):
     violinData[i] = bin_data(loop,stem,bins[i],bnext)
     for j in range(len(percents)):
         predatas[j].append(calculate_percent(loop,stem,bins[i],bnext,percents[j]))
-
+        
 datas = [strip_0s(i,bins) for i in predatas]
-print(len(violinData))
 violinbins,violinData = strip_0s(violinData,bins)
-print(len(violinData))
-print(','.join([str(len(i)) for i in violinData]))
+
 violinData = [np.array(i) for i in violinData]
 medians = [np.median(i) for i in violinData]
 means = [np.mean(i) for i in violinData]
 modes = [stats.mode(i).mode for i in violinData]
+
 #Plot points
 colors = ['r','b','g','k','c','m']
 font = 14
@@ -122,10 +125,6 @@ random.shuffle(alldata)
 somedata = alldata[:int(len(alldata)*0.2)]
 loop,stem = list(zip(*somedata))
 plt.violinplot(violinData, violinbins, points=50, widths=0.3,showmeans=False, showextrema=False, showmedians=False)
-#plt.plot(violinbins,medians,'k', ls='none',marker='_',markersize=5,label='median')
-#plt.plot(violinbins,means,'p', ls='none',marker='_',markersize=5,label='mean')
-#plt.plot(violinbins,modes,'o', ls='none',marker='_',markersize=5,label='mode')
-#plt.plot(loop,stem,'k',ls = 'none', marker = '.',markersize = 2,alpha=0.1)
 for i in range(len(datas)):
     plt.plot(datas[i][0],datas[i][1],colors[i],ls = 'none', marker = '_',markersize = 5)
     res = stats.linregress(datas[i][0],datas[i][1])
@@ -136,9 +135,12 @@ for i in range(len(datas)):
 plt.xlabel(loopstr+' Energy (kcal/mol)',fontsize = font)
 plt.ylabel('Stem Energy (kcal/mol)',fontsize = font)
 plt.legend()
+plt.ylim((-15,2))
 
 outstr = 'figures/percentStemCorr'+loopstr+'.pdf'
 if IDfile:
     outstr = outstr.replace('.pdf','90.pdf')
+if 'refold' in infile:
+    outstr = outstr.replace('.pdf','refold.pdf')
 print(outstr)
 plt.savefig(outstr)

@@ -1,9 +1,10 @@
-for f in dbnFiles/$1*
 mkdir -p dbnFiles_refolded
+
+for f in dbnFiles/$1*
 do
     #run a script to extract the sequence and constraint to produce a .db file.
     echo $f
-    python foldRFAM.py $f
+    python refold.py $f
     #process the .db file with bpRNA and add the updated RFAM file to the directory of stFiles.
     perl ../../src/bpRNA_align/bpRNA.pl *.db*;
     #cleanup.
